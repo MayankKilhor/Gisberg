@@ -1,7 +1,10 @@
 var express= require("express");
 var app = express();
+var bodyParser= require("body-parser");
 
 var port = process.env.PORT || 3000;
+
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.listen(port, function () {
   console.log("Server Has Started!");
@@ -20,3 +23,7 @@ app.get("/campgrounds",function(req, res){
     ]
     res.render("campgrounds",{Campgrounds:campgrounds});
 });
+
+app.post("/campgrounds",function(req,res){
+		 res.send("you hit the post route");
+		 });
